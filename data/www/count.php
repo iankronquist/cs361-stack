@@ -1,4 +1,5 @@
 <?php
+print("<strong>header</strong>");
 $redis = new Redis();
 $redis->connect('redis');
 $redis->incr('count');
