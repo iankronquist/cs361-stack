@@ -3,10 +3,7 @@ nginx:
   links:
     - php:php
   ports:
-   - "1935:1935"
-   - "172.17.42.1:8080:80"
-  expose:
-   - "80"
+   - "80:80"
   volumes:
    - data/www:/var/www
 redis:
