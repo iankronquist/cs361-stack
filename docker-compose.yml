@@ -1,0 +1,25 @@
+nginx:
+  build: nginx/
+  links:
+    - php:php
+  ports:
+   - "1935:1935"
+   - "172.17.42.1:8080:80"
+  expose:
+   - "80"
+  volumes:
+   - data/www:/var/www
+redis:
+  build: redis/
+  expose:
+   - "6379"
+  volumes:
+   - data/redis:/var/lib/redis
+php:
+  build: php/
+  expose:
+   - "9000"
+  links:
+   - redis:redis
+  volumes:
+   - data/www:/var/www

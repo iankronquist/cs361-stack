@@ -1,0 +1,16 @@
+upstream nginx_backend {
+      server php:9000;
+}
+
+server {
+    listen       80;
+
+    location ~ \.php$ {
+            root /var/www;
+            fastcgi_split_path_info ^(.+\.php)(/.+)$;
+            fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
+            # NOTE: You should have "cgi.fix_pathinfo = 0;" in php.ini
+            fastcgi_pass nginx_backend;
+            include fastcgi.conf;
+    }
+}
