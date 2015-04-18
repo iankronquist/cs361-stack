@@ -21,6 +21,5 @@ WORKDIR /etc/nginx
 
 # copy configs
 COPY config/ /etc/nginx/
-RUN mkdir /var/log/nginx
 
 CMD ["nginx"]
