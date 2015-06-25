@@ -5,13 +5,13 @@ nginx:
   ports:
    - "80:80"
   volumes:
-   - data/www:/var/www
+   - nginx/data:/var/www
 redis:
   build: redis/
   expose:
    - "6379"
   volumes:
-   - data/redis:/var/lib/redis
+   - redis/data:/var/lib/redis
 php:
   build: php/
   expose:
@@ -19,4 +19,4 @@ php:
   links:
    - redis:redis
   volumes:
-   - data/www:/var/www
+   - nginx/data:/var/www
