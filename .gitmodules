@@ -1,0 +1,3 @@
+[submodule "nginx/data"]
+	path = nginx/data
+	url = git@github.com:iankronquist/cs361projectb.git
