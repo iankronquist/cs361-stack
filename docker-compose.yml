@@ -6,17 +6,16 @@ nginx:
    - "80:80"
   volumes:
    - nginx/data:/var/www
-redis:
-  build: redis/
-  expose:
-   - "6379"
-  volumes:
-   - redis/data:/var/lib/redis
+mysql:
+  image: mysql
+  environment:
+    MYSQL_ROOT_PASSWORD: root
+    MYSQL_DATABASE: project_b
 php:
   build: php/
   expose:
    - "9000"
   links:
-   - redis:redis
+   - mysql:mysql
   volumes:
    - nginx/data:/var/www
